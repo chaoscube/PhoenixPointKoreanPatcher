@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <ApplicationIcon>uabeavalonia.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+    <PackageReference Include="MessageBox.Avalonia" Version="1.2.0" />
+    <PackageReference Include="Mono.Cecil" Version="0.11.3" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AssetsTools.NET">
+      <HintPath>..\Libs\AssetsTools.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LoadModPackageDialog.axaml.cs">
+      <DependentUpon>LoadModPackageDialog.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <Target Name="UABEAAfterBuild" AfterTargets="AfterBuild" Condition="'$(SolutionDir)' != '*Undefined*'">
+    <ItemGroup>
+	  <ReleaseFiles Include="$(SolutionDir)ReleaseFiles\**\*" />
+	</ItemGroup>
+	<Copy SourceFiles="@(ReleaseFiles)" DestinationFolder="$(OutputPath)" ContinueOnError="true" />
+    <MakeDir Directories="$(OutputPath)plugins" ContinueOnError="true" />
+  </Target>
+  
+  <Target Name="UABEAAfterPublish" AfterTargets="Publish" Condition="'$(SolutionDir)' != '*Undefined*'">
+    <ItemGroup>
+	  <ReleaseFiles Include="$(SolutionDir)ReleaseFiles\**\*" />
+	</ItemGroup>
+    <Copy SourceFiles="@(ReleaseFiles)" DestinationFolder="$(PublishDir)" ContinueOnError="true" />
+    <MakeDir Directories="$(PublishDir)plugins" ContinueOnError="true" />
+  </Target>
+</Project>
