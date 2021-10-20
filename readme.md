@@ -1,48 +1,22 @@
-![](UABEAvalonia/Assets/logo.png)
+https://github.com/nesrak1/UABEA.git
 
-## [Latest Build](https://nightly.link/nesrak1/UABEA/workflows/dotnet-desktop/master/uabea-windows.zip)
+기반으로 대충 만든 피닉스 포인트 한국어 패치 툴
+내가 게으르고 책임감없는 사람이라 이거 계속 붙잡고 사후지원 안할거 같아서 그냥 코드 공개해놓음
+일단 버그는 이슈에 올려주면 시간 날때 수정하긴 할텐데 얼마나 갈지는 모르겠음
 
-[![GitHub issues](https://img.shields.io/github/issues/nesrak1/UABEA?logo=GitHub&style=flat-square)](https://github.com/nesrak1/UABEA/issues) [![discord](https://img.shields.io/discord/862035581491478558?label=discord&logo=discord&logoColor=FFFFFF&style=flat-square)](https://discord.gg/hd9VdswwZs)
-
-## Why UABEAvalonia
-
-[UABE](https://github.com/DerPopo/UABE) has currently not been updated in a while and does not support newer Unity versions. The goal of UABEA is to remake UABE to keep it up to date. All of the UI has been kept the same for those familiar with UABE. At the moment, implementing base features of UABE is still in progress. Also, it is built with Avalonia so it (should be) cross platform, no Wine needed.
-
-## New features
-
-There's not much in the way of new features as of yet (I wasn't even planning on doing this). There have been many requested features such as sprite importing/exporting, better command line support, batch import/export from gui, etc. I do not have a lot of time, but I do hope to get to these someday.
-
-## Exporting assets
-
-UABEA can export textures and asset dumps, but that's about it. If you're trying to dump anything else, try [AssetStudio](https://github.com/Perfare/AssetStudio) or [AssetRipper](https://github.com/ds5678/AssetRipper) (uTinyRipper), but these tools cannot import again. 
-
-## Scripting
-
-If you're doing something that requires scripting such as dumping all of the fields from a MonoBehaviour, importing multiple text files or textures, etc. without interacting with the gui, try using [AssetsTools.NET](https://github.com/nesrak1/AssetsTools.NET) instead. UABEA can be a good way to figure out how the file is laid out, but the script can be written with AssetsTools. If AssetsTools is too complicated, you can also try [UnityPy](https://github.com/K0lb3/UnityPy) which has a simpler api with the cost of supporting less assets.
-
-## Differences between UABE and UABEA
-
-|                                     | UABE           | UABEA                                 |
-| ----------------------------------- | -------------- | ------------------------------------- |
-| Supported versions                  | Unity 4-2019.3 | Unity 5-2020.3                        |
-| Class data editor                   | Yes            | No                                    |
-| Standalone .exe creator             | Yes            | No                                    |
-| Package creator                     | Yes            | Yes, but bundles aren't supported yet |
-| Bundle > compress to memory         | No             | Yes                                   |
-| Assets info > Dependencies          | Yes            | No                                    |
-| Assets info > Containers            | Yes            | No                                    |
-| Plugins > AudioClip                 | Yes            | No                                    |
-| Plugins > Mesh                      | Yes            | No                                    |
-| Plugins > MovieTexture              | Yes            | No                                    |
-| Plugins > SubstanceArchive          | Yes            | No                                    |
-| Plugins > TerrainData               | Yes            | No                                    |
-| Plugins > UMAMesh                   | Yes            | No                                    |
-| And more I probably forgot about... |                |                                       |
-
-## Libraries
-
-* [Avalonia](https://github.com/AvaloniaUI/Avalonia) for UI
-* [AssetsTools.NET](https://github.com/nesrak1/AssetsTools.NET) for assets reading/writing which uses [detex](https://github.com/hglm/detex) for DXT decoding
-* [ISPC](https://github.com/GameTechDev/ISPCTextureCompressor) for DXT encoding
-* [crnlib](https://github.com/Unity-Technologies/crunch/tree/unity) (crunch) for crunch decompressing and compressing
-* [PVRTexLib](https://developer.imaginationtech.com/downloads/) (PVRTexTool) for all other texture decoding and encoding
+ - Phoenix Point가 설치된 폴더에 PhoenixPointKoreanPatcher 폴더를 만들고 패치툴을 복사해 넣습니다.
+ - https://docs.google.com/spreadsheets/d/1rYYCY0szEZN_xvBV8lEfpWpefZ9b66lL1U3bIAQFdSQ/edit?usp=sharing 들어가서 댓글로 번역 제안
+  - I2Languages.tsv
+  - I2Languages_GeoEvents.tsv
+  - I2Languages_GeoHavens.tsv
+  - I2Languages_Research.tsv
+  - I2Languages_CharNames.tsv // 케릭터 이름인데 번역 안해도 됨
+  - I2Languages_Mod.tsv       // 뭐에 쓰는지는 모르겠는데 문자열 들어가있는게 없음
+  - I2Languages_Saber.tsv     // DLC5랑 관계있는 파일같은데 2021.10.20일 기준으로 문자열 들어가있는게 없음
+ - 구글 시트의 각 탭을 파일 > 다운로드 > .tsv 로 저장한다
+  - "피닉스 포인트 번역 - I2Languages.tsv" 이런식으로 저장되면 "피닉스 포인트 번역 - " 부분은 지우고 PhoenixPointKoreanPatcher 폴더에 넣는다.
+ - PhoenixPointKoreanPatcher.exe 실행
+ - PhoenixPointKoreanPatcher 폴더에 sharedassets0.assets 파일이 생기면 PhoenixPointWin64_Data에 덮어 쓴다.
+ - 게임 실행 ㄱㄱ
+ - 옵션에서 중국어 선택
+  - 중국몽이 이니 조선족이니 하면서 어그로 끄는 새끼가 있는데 한국어랑 중국어가 둘다 2바이트 문자라 중국어에 번역문 덮어쓴거임 헛소리 ㄴㄴ
